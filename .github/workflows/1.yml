@@ -32,7 +32,7 @@ jobs:
       run: |
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         cd openwrt
-        wget -cO https://github.com/qpzr/LOW-SDK/releases/download/v5.4/sdk.tar.xz
+        curl -O -L https://github.com/qpzr/LOW-SDK/releases/download/v5.4/sdk.tar.xz
         sudo mkdir -p -m 777 staging_dir build_dir sdk
                
     - name: Update feeds
