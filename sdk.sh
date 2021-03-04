@@ -1,3 +1,4 @@
+#
 curl -O -L https://github.com/qpzr/SDK/releases/download/v5.4/sdk.tar.xz
 mkdir -p sdk
 tar -xJf sdk.tar.xz -C sdk
