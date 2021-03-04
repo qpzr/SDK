@@ -1,4 +1,4 @@
-curl -O -L sdk.tar.xz https://openwrt.cc/releases/targets/ipq40xx/generic/openwrt-sdk-ipq40xx-generic_gcc-8.4.0_musl_eabi.Linux-x86_64.tar.xz
+wget -cO sdk.tar.xz https://openwrt.cc/releases/targets/ipq40xx/generic/openwrt-sdk-ipq40xx-generic_gcc-8.4.0_musl_eabi.Linux-x86_64.tar.xz
 mkdir -p sdk
 tar -xJf sdk.tar.xz -C sdk
 cp -rf sdk/*/staging_dir/* ./staging_dir/
