@@ -1,9 +1,8 @@
-#
-wget -cO sdk.tar.xz https://github.com/qpzr/SDK/releases/download/v5.4/sdk.tar.xz
+curl -O -L https://github.com/qpzr/SDK/releases/download/v5.4/sdk.tar.xz
 mkdir -p sdk
 tar -xJf sdk.tar.xz -C sdk
 cp -rf sdk/*/staging_dir/* ./staging_dir/
 rm -rf sdk.tar.xz sdk
 sed -i '/\(tools\|toolchain\)\/Makefile/d' Makefile
 ln -sf /usr/bin/python staging_dir/host/bin/python
-ln -sf /usr/bin/python staging_dir/host/bin/python3
+ln -sf /usr/bin/python staging_dir/host/bin/python3 
