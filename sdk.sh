@@ -1,5 +1,5 @@
 #
-curl -O -L https://github.com/qpzr/SDK/releases/download/v5.4/sdk.tar.xz
+wget -cO sdk.tar.xz https://github.com/qpzr/SDK/releases/download/v5.4/sdk.tar.xz
 mkdir -p sdk
 tar -xJf sdk.tar.xz -C sdk
 cp -rf sdk/*/staging_dir/* ./staging_dir/
