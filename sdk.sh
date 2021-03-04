@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 DIR="sdk"
 DL_NAME="openwrt-sdk-ipq40xx-generic_gcc-8.4.0_musl_eabi.Linux-x86_64.tar.xz"
