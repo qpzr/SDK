@@ -19,6 +19,7 @@ sed -i 's/OpenWrt/G-DOCK-2.0/g' package/kernel/mac80211/files/lib/wifi/mac80211.
 
 echo '只编译快速转发'
 sed -i 's/+kmod-fast-classifier +pdnsd-alt +kmod-tcp-bbr/+kmod-fast-classifier/g' package/lean/luci-app-sfe/Makefile
+sed -i '32,45d' package/lean/luci-app-sfe/luasrc/model/cbi/sfe.lua
 
 echo '加载软件包'
 cd package
@@ -29,3 +30,9 @@ svn co https://github.com/Lienol/openwrt/trunk/package/diy/luci-app-adguardhome
 echo '最新argon主题'
 rm -rf ./lean/luci-theme-argon
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon  
+
+echo '最新QCA包fast-classifier和shortcut-fe'
+rm -rf ./lean/fast-classifier
+rm -rf ./lean/shortcut-fe
+svn co https://github.com/jollaman999/openwrt/trunk/package/qca/fast-classifier
+svn co https://github.com/jollaman999/openwrt/trunk/package/qca/shortcut-fe
