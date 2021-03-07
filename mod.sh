@@ -32,7 +32,9 @@ rm -rf ./lean/luci-theme-argon
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon  
 
 echo '最新QCA包fast-classifier和shortcut-fe'
-#rm -rf ./lean/fast-classifier
-#rm -rf ./lean/shortcut-fe
-#svn co https://github.com/jollaman999/openwrt/trunk/package/qca/fast-classifier
-#svn co https://github.com/jollaman999/openwrt/trunk/package/qca/shortcut-fe
+svn co https://github.com/jollaman999/openwrt/trunk/package/qca/fast-classifier
+svn co https://github.com/jollaman999/openwrt/trunk/package/qca/shortcut-fe
+cp -f ./lean/fast-classifier/Makefile fast-classifier/Makefile 
+cp -f ./lean/shortcut-fe/Makefile shortcut-fe/Makefile
+rm -rf ./lean/fast-classifier
+rm -rf ./lean/shortcut-fe
