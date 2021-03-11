@@ -21,9 +21,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@main
 
-    - name: Initialization environment
-      env:
-        DEBIAN_FRONTEND: noninteractive
+    - name: Prepare environment
       run: |
         sudo -E apt-get update
         sudo -E apt-get install libtool-bin gperf python-docutils autopoint gettext
@@ -41,15 +39,9 @@ jobs:
         
     - name: Load Prepare toolchain
       run: |
+        chmod +x $DIY_P1_SH
         cd openwrt
-        wget -cO sdk.tar.xz https://openwrt.cc/releases/targets/ipq40xx/generic/openwrt-sdk-ipq40xx-generic_gcc-8.4.0_musl_eabi.Linux-x86_64.tar.xz
-        mkdir -p sdk
-        tar -xJf sdk.tar.xz -C sdk
-        cp -rf sdk/*/staging_dir/* ./staging_dir/
-        rm -rf sdk.tar.xz sdk
-        sed -i '/\(tools\|toolchain\)\/Makefile/d' Makefile
-        ln -sf /usr/bin/python staging_dir/host/bin/python
-        ln -sf /usr/bin/python staging_dir/host/bin/python3
+        $GITHUB_WORKSPACE/$DIY_P1_SH
         
     - name: Load custom configuration
       run: |
@@ -57,6 +49,7 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
+  
     - name: Download package
       id: package
       run: |
@@ -73,7 +66,7 @@ jobs:
         echo -e "$(($(nproc)+1)) thread compile"
         make -j$(($(nproc)+1)) || make -j1 || make -j1 V=s
         
-    - name: Push  空投回国
+    - name: Push  
       run: |
         cd openwrt/bin
         git init
